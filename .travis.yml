@@ -1,4 +1,9 @@
 language: rust
+
+os:
+- osx
+- linux
+
 rust:
 - nightly
 before_script:
