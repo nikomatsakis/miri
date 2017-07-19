@@ -12,6 +12,7 @@
 // compile-flags: -Zmir-emit-validate=0
 
 //ignore-msvc
+//ignore-osx
 
 #![feature(libc)]
 

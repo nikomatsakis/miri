@@ -1,4 +1,5 @@
 //ignore-msvc
+//ignore-osx
 
 fn make_vec() -> Vec<u8> {
     let mut v = Vec::with_capacity(4);

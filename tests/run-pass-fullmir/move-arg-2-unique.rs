@@ -9,6 +9,7 @@
 // except according to those terms.
 
 //ignore-msvc
+//ignore-osx
 
 #![allow(unused_features, unused_variables)]
 #![feature(box_syntax)]

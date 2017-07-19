@@ -12,6 +12,7 @@
 // compile-flags: -Zmir-opt-level=0
 
 //ignore-msvc
+//ignore-osx
 use std::i32;
 
 pub fn main() {

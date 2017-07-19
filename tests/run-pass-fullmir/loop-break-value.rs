@@ -9,6 +9,7 @@
 // except according to those terms.
 
 //ignore-msvc
+//ignore-osx
 
 #![feature(never_type)]
 #![allow(unreachable_code)]

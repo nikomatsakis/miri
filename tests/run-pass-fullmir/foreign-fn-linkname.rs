@@ -9,6 +9,7 @@
 // except according to those terms.
 
 //ignore-msvc
+//ignore-osx
 #![feature(libc)]
 
 extern crate libc;

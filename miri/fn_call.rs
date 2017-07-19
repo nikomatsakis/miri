@@ -460,6 +460,16 @@ impl<'a, 'tcx> EvalContextExt<'tcx> for EvalContext<'a, 'tcx, super::Evaluator> 
                 self.write_null(dest, dest_ty)?;
             }
 
+            "mmap" => {
+                // This is a horrible hack, but well... the guard page mechanism calls mmap and expects a particular return value, so we give it that value
+                let addr = args[0].into_ptr(&mut self.memory)?;
+                self.write_ptr(dest, addr, dest_ty)?;
+            }
+
+            "_tlv_atexit" => {
+                return err!(Unimplemented("can't interpret with full mir for osx target"));
+            },
+
             _ => {
                 return err!(Unimplemented(
                     format!("can't call C ABI function: {}", link_name),
