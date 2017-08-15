@@ -149,7 +149,7 @@ fn for_all_targets<F: FnMut(String)>(sysroot: &Path, mut f: F) {
 
 fn get_sysroot() -> PathBuf {
     let sysroot = std::env::var("MIRI_SYSROOT").unwrap_or_else(|_| {
-        let sysroot = std::process::Command::new("rustc")
+        let sysroot = std::process::Command::new(miri_path())
             .arg("--print")
             .arg("sysroot")
             .output()
@@ -161,7 +161,7 @@ fn get_sysroot() -> PathBuf {
 }
 
 fn get_host() -> String {
-    let host = std::process::Command::new("rustc")
+    let host = std::process::Command::new(miri_path())
         .arg("-vV")
         .output()
         .expect("rustc not found for -vV")
@@ -176,6 +176,8 @@ fn get_host() -> String {
 
 #[test]
 fn run_pass_miri() {
+    println!("using miri at {}", miri_path().display());
+    std::env::set_var("RUST_BACKTRACE", "1");
     let sysroot = get_sysroot();
     let host = get_host();
 
@@ -195,6 +197,8 @@ fn run_pass_rustc() {
 
 #[test]
 fn compile_fail_miri() {
+    println!("using miri at {}", miri_path().display());
+    std::env::set_var("RUST_BACKTRACE", "1");
     let sysroot = get_sysroot();
     let host = get_host();
 
