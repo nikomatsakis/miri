@@ -467,7 +467,7 @@ impl<'a, 'tcx> EvalContextExt<'tcx> for EvalContext<'a, 'tcx, super::Evaluator> 
             }
 
             "_tlv_atexit" => {
-                return err!(Unimplemented("can't interpret with full mir for osx target"));
+                return err!(Unimplemented("can't interpret with full mir for osx target".to_owned()));
             },
 
             _ => {
